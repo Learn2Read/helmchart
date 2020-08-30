@@ -1,0 +1,17 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: pg-service
+  labels:
+    app: pg-database
+spec:
+  ports:
+  - name: tcp-pg-port
+    protocol: TCP
+    port: 5432
+    targetPort: tcp-pg-port
+  selector:
+    app: pg-database
+  type: ClusterIP
+  sessionAffinity: None
