@@ -60,7 +60,10 @@ ingress:
     - host: dev.learntoread.com.cn
       paths: 
         - /
-  tls: []
+  tls:
+    - hosts:
+        - dev.learntoread.com.cn
+      secretName: nginx-ssl
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
