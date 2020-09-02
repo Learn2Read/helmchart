@@ -3,7 +3,7 @@ entries:
   api-server:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-09-02T13:47:42.487737+08:00"
+    created: "2020-09-02T14:09:49.886364+08:00"
     description: A Helm chart for Kubernetes
     digest: 0aad292b88a25f7317cde3f238dd046f49fa2ced318a8919986d4fc63414a471
     name: api-server
@@ -14,12 +14,12 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-09-02T13:47:42.488325+08:00"
+    created: "2020-09-02T14:09:49.886981+08:00"
     description: A Helm chart for Kubernetes
-    digest: 10a24eb8f2d23b4a56123dbbbec5cee9c38e66c7d5c7c435d1f183e51395409f
+    digest: cf95e1a9d37f0b39de844ff8bcac8ac4a048bc934d4e2586b79924319be0d899
     name: frontend
     type: application
     urls:
     - frontend-1.0.0.tgz
     version: 0.1.0
-generated: "2020-09-02T13:47:42.484883+08:00"
+generated: "2020-09-02T14:09:49.884446+08:00"
