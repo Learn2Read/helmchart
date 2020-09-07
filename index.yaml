@@ -3,7 +3,7 @@ entries:
   api-server:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-09-02T14:09:49.886364+08:00"
+    created: "2020-09-07T12:37:53.901623+08:00"
     description: A Helm chart for Kubernetes
     digest: 0aad292b88a25f7317cde3f238dd046f49fa2ced318a8919986d4fc63414a471
     name: api-server
@@ -14,7 +14,7 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-09-02T14:09:49.886981+08:00"
+    created: "2020-09-07T12:37:53.902675+08:00"
     description: A Helm chart for Kubernetes
     digest: cf95e1a9d37f0b39de844ff8bcac8ac4a048bc934d4e2586b79924319be0d899
     name: frontend
@@ -22,4 +22,15 @@ entries:
     urls:
     - frontend-1.0.0.tgz
     version: 0.1.0
-generated: "2020-09-02T14:09:49.884446+08:00"
+  keycloak:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-09-07T12:37:53.903878+08:00"
+    description: A Helm chart for Kubernetes
+    digest: 9d5688be7e5bb71f02f036217ff45cb39c96cf23293098d4ba6c08dc0baecc87
+    name: keycloak
+    type: application
+    urls:
+    - keycloak-1.0.0.tgz
+    version: 0.1.0
+generated: "2020-09-07T12:37:53.899908+08:00"
