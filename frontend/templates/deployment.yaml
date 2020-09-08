@@ -33,6 +33,27 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"     
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: KEYCLOAK_REALM
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: realm 
+          - name: KEYCLOAK_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: client_id 
+          - name: KEYCLOAK_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: client_secret 
+          - name: KEYCLOAK_AUTH_SERVER
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: auth_server  
           ports:
             - name: http
               containerPort: 3000

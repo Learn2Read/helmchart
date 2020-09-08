@@ -65,7 +65,27 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: pg-secret
-                key: database                  
+                key: database 
+          - name: KEYCLOAK_REALM
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: realm 
+          - name: KEYCLOAK_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: client_id 
+          - name: KEYCLOAK_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: client_secret 
+          - name: KEYCLOAK_AUTH_SERVER
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: auth_server                                          
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:
