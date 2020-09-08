@@ -3,9 +3,9 @@ entries:
   api-server:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-09-08T08:51:41.115209+08:00"
+    created: "2020-09-09T00:06:48.774903+08:00"
     description: A Helm chart for Kubernetes
-    digest: 71c70d2f6e8ed6002db09338c2d043208627540acaed7637a880521fb39e2475
+    digest: 77bf363aaed1e808edc2e7c127af90b52148e393171cfb44285f9be5a9faad8c
     name: api-server
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-09-08T08:51:41.116283+08:00"
+    created: "2020-09-09T00:06:48.775366+08:00"
     description: A Helm chart for Kubernetes
-    digest: c798af20fc9f9152337fb3f795c7d8d4021b470c8131e3ede1e2c99dca06c678
+    digest: 8e507c66b28f540e297d4163e98337047533a7c23ed498d192d6800142c63cb1
     name: frontend
     type: application
     urls:
@@ -25,12 +25,23 @@ entries:
   keycloak:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-09-08T08:51:41.117292+08:00"
+    created: "2020-09-09T00:06:48.775797+08:00"
     description: A Helm chart for Kubernetes
-    digest: 4ae8d60436406d3823fedeb4041c2a293c3a3453c91d6b17c78ff13a5e5b4197
+    digest: 3ce8feb6508ab405ff8b400b41e9a830f1eae6984954b025e56b08f03384a6d6
     name: keycloak
     type: application
     urls:
     - keycloak-1.0.0.tgz
     version: 0.1.0
-generated: "2020-09-08T08:51:41.110089+08:00"
+  postgres:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2020-09-09T00:06:48.776245+08:00"
+    description: A Helm chart for Kubernetes
+    digest: b53fd52799a75ea0d59e81532b412250ae79a23bb453a7029f44929c244d756e
+    name: postgres
+    type: application
+    urls:
+    - postgres-1.0.0.tgz
+    version: 0.1.0
+generated: "2020-09-09T00:06:48.771796+08:00"
