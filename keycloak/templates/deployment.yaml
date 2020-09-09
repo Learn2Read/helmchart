@@ -80,9 +80,15 @@ spec:
               containerPort: 8080
               protocol: TCP
           livenessProbe:
+            failureThreshold: 3
             httpGet:
               path: /
               port: http
+              scheme: HTTP
+            periodSeconds: 10
+            initialDelaySeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 1
           readinessProbe:
             httpGet:
               path: /auth/realms/master
