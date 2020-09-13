@@ -34,22 +34,22 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"     
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-          - name: KEYCLOAK_REALM
+          - name: REACT_APP_KEYCLOAK_REALM
             valueFrom:
               secretKeyRef:
                 name: keycloak-secret
                 key: realm 
-          - name: KEYCLOAK_CLIENT_ID
+          - name: REACT_APP_KEYCLOAK_CLIENT_ID
             valueFrom:
               secretKeyRef:
                 name: keycloak-secret
                 key: client_id 
-          - name: KEYCLOAK_CLIENT_SECRET
+          - name: REACT_APP_KEYCLOAK_CLIENT_SECRET
             valueFrom:
               secretKeyRef:
                 name: keycloak-secret
                 key: client_secret 
-          - name: KEYCLOAK_AUTH_SERVER
+          - name: REACT_APP_KEYCLOAK_AUTH_SERVER
             valueFrom:
               secretKeyRef:
                 name: keycloak-secret
