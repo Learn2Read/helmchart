@@ -85,7 +85,27 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: keycloak-secret
-                key: auth_server                                          
+                key: auth_server        
+          - name: RABBITMQ_HOST
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-secret
+                key: host    
+          - name: RABBITMQ_PORT
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-secret
+                key: port       
+          - name: RABBITMQ_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-secret
+                key: username
+          - name: RABBITMQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-secret
+                key: password                                                 
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:
