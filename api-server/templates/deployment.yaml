@@ -105,7 +105,17 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: rabbitmq-secret
-                key: password                                                 
+                key: password          
+          - name: RABBITMQ_PRODUCER
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-secret
+                key: producer
+          - name: RABBITMQ_CONSUMER
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq-secret
+                key: consumer                                                             
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:
