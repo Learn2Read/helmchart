@@ -1,0 +1,112 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "elasticsearch.fullname" . }}
+  labels:
+    {{- include "elasticsearch.labels" . | nindent 4 }}
+spec:
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
+  selector:
+    matchLabels:
+      {{- include "elasticsearch.selectorLabels" . | nindent 6 }}
+  serviceName: {{ include "elasticsearch.fullname" . }}  
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "elasticsearch.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "elasticsearch.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: file-permissions
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          command: ['chown', '-R', '1000:1000', '/usr/share/elasticsearch/data']
+          volumeMounts:
+          - name: elasticsearch-data
+            mountPath: "/usr/share/elasticsearch/data"
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+          - name: http-port
+            containerPort: 9200
+            protocol: TCP
+          - name: tcp-port
+            containerPort: 9300
+            protocol: TCP
+          envFrom:
+          - configMapRef:
+              name: es-config  
+          env:
+          - name: ELASTIC_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: elasticsearch-secret
+                key: password
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: elasticsearch-data
+            mountPath: "/usr/share/elasticsearch/data"
+          - mountPath: "/usr/share/elasticsearch/config/elasticsearch.yml"
+            name: config-yml
+            subPath: elasticsearch.yml
+            readOnly: true
+        - name: {{ .Chart.Name }}-kibana
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.kibana.image.repository }}:{{ .Values.kibana.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.kibana.image.pullPolicy }}
+          ports:
+          - name: http-ki-port
+            containerPort: 5601
+            protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - mountPath: "/usr/share/kibana/config/kibana.yml"
+            name: config-yml
+            subPath: kibana.yml
+            readOnly: true    
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: config-yml
+          configMap:
+            name: config-yml
+  volumeClaimTemplates:
+  - metadata:
+      name: elasticsearch-data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: {{ .Values.elasticsearch.volume_size }}
+      {{- if .Values.elasticsearch.storageClassName }}
+      storageClassName: {{ .Values.elasticsearch.storageClassName }}
+      {{- end }}    

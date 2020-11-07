@@ -1,0 +1,29 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: es-config
+data:
+  discovery.type: single-node
+  cluster.name: ltr
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: config-yml
+data:
+  elasticsearch.yml: |
+    cluster.name: ltr
+    network.host: 0.0.0.0
+    xpack.security.enabled: true
+    xpack.security.authc.api_key.enabled: true
+  kibana.yml: |
+    server.name: kibana
+    server.host: "0"
+    elasticsearch.hosts: [ "http://localhost:9200" ]
+    monitoring.ui.container.elasticsearch.enabled: true
+    xpack.ingestManager.enabled: true
+    xpack.ingestManager.fleet.tlsCheckDisabled: true
+    xpack.security.enabled: true
+    elasticsearch.username: "elastic"
+    elasticsearch.password: {{ .Values.elasticsearch.password }}
