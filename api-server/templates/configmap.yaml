@@ -5,3 +5,5 @@ metadata:
   name: app-config
 data:
   environment: development
+  RABBITMQ_PRODUCER: wx.messages
+  RABBITMQ_CONSUMER: wx.messages
