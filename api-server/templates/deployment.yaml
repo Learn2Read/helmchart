@@ -41,6 +41,26 @@ spec:
           - configMapRef:
               name: app-config
           env:
+          - name: ES_HOST
+            valueFrom:
+              secretKeyRef:
+                name: es-secret
+                key: host
+          - name: ES_PORT
+            valueFrom:
+              secretKeyRef:
+                name: es-secret
+                key: port
+          - name: ES_USER
+            valueFrom:
+              secretKeyRef:
+                name: es-secret
+                key: username
+          - name: ES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: es-secret
+                key: password
           - name: DB_HOST
             valueFrom:
               secretKeyRef:
