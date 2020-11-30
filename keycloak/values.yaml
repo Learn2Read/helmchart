@@ -44,17 +44,19 @@ service:
   type: ClusterIP
   port: 80
 
-# ingress:
-#   enabled: false
-#   annotations: {}
-#     # kubernetes.io/ingress.class: nginx
-#     # kubernetes.io/tls-acme: "true"
-#   hosts:
-#     - host: ""
-#       paths: []
-#   tls: 
-#   - secretName: ""
-#     hosts: []
+ingress:
+  enabled: false
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt
+  hosts:
+    - host: www.learntoread.com.cn
+      paths: 
+        - /auth
+  tls:
+    - hosts:
+        - www.learntoread.com.cn
+      secretName: letsencrypt
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

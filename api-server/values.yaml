@@ -41,10 +41,10 @@ service:
   port: 80
 
 ingress:
-  enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt
   hosts:
     - host: dev.learntoread.com.cn
       paths: 
@@ -52,10 +52,7 @@ ingress:
   tls:
     - hosts:
         - dev.learntoread.com.cn
-      secretName: nginx-ssl
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+      secretName: letsencrypt
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
