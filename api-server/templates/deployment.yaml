@@ -126,11 +126,16 @@ spec:
               secretKeyRef:
                 name: rabbitmq-secret
                 key: password      
-          - name: OSS_ENDPOINT
+          - name: OSS_ENDPOINT_INT
             valueFrom:
               secretKeyRef:
                 name: oss-secret
-                key: endpoint  
+                key: intEndpoint  
+          - name: OSS_ENDPOINT_EXT
+            valueFrom:
+              secretKeyRef:
+                name: oss-secret
+                key: extEndpoint        
           - name: OSS_BUCKET
             valueFrom:
               secretKeyRef:

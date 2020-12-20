@@ -3,9 +3,9 @@ entries:
   api-server:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-12-20T22:14:37.180334+08:00"
+    created: "2020-12-20T22:56:36.485581+08:00"
     description: A Helm chart for Kubernetes
-    digest: bdb7661c4b559344b0a0c2e9fe34a2017f9e2711bf4fb644fb5d45c6a4026649
+    digest: cd47ecae99aac1cb3f3d2543ce64fee9e30c28d3878414ff26176fdf0452dc1c
     name: api-server
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   elasticsearch:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-12-20T22:14:37.180998+08:00"
+    created: "2020-12-20T22:56:36.486346+08:00"
     description: A Helm chart for Kubernetes
-    digest: 11761215b4cac6cad32d26fc7a9f0621e2fce61f0bc70b05093be02e87bb530d
+    digest: 6169ba6a959c0001df919910b05a1f695adbd139bb9e3878f12c3bd4758e73f7
     name: elasticsearch
     type: application
     urls:
@@ -25,9 +25,9 @@ entries:
   frontend:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-12-20T22:14:37.181748+08:00"
+    created: "2020-12-20T22:56:36.487018+08:00"
     description: A Helm chart for Kubernetes
-    digest: e9019fd29333fba289c4cc261e32f78d8fb339ca3b08d4e07a633385219514ad
+    digest: 254b6409060642661e25facc6c6beffe7766dc279815606090e4daea1b039ea0
     name: frontend
     type: application
     urls:
@@ -36,9 +36,9 @@ entries:
   keycloak:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-12-20T22:14:37.182452+08:00"
+    created: "2020-12-20T22:56:36.48764+08:00"
     description: A Helm chart for Kubernetes
-    digest: 80dfd37fef99c1e227606e53617985d308abdf048d5490c6e221bd72ed39e44e
+    digest: 2d6ca5bb186ba25d7ae009327d3496f92886009575c62a57873cf34cb9f40fa0
     name: keycloak
     type: application
     urls:
@@ -47,12 +47,12 @@ entries:
   postgres:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-12-20T22:14:37.183137+08:00"
+    created: "2020-12-20T22:56:36.4883+08:00"
     description: A Helm chart for Kubernetes
-    digest: 94d8bb8800fdb65711c5acde25a1dd051904c110a992049de41c430c67486350
+    digest: 48e38e9baf49ed618a6565c032a23d43cef13eea122e176c186d5ff71d3bbae3
     name: postgres
     type: application
     urls:
     - postgres-1.0.0.tgz
     version: 0.1.0
-generated: "2020-12-20T22:14:37.179482+08:00"
+generated: "2020-12-20T22:56:36.483252+08:00"
