@@ -125,7 +125,37 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: rabbitmq-secret
-                key: password                                                              
+                key: password      
+          - name: OSS_ENDPOINT
+            valueFrom:
+              secretKeyRef:
+                name: oss-secret
+                key: endpoint  
+          - name: OSS_BUCKET
+            valueFrom:
+              secretKeyRef:
+                name: oss-secret
+                key: bucket  
+          - name: OSS_RW_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: oss-secret
+                key: rwAccessId  
+          - name: OSS_RW_ACCESS_KEY_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: oss-secret
+                key: rwAccessSecret
+          - name: OSS_RO_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: oss-secret
+                key: roAccessId  
+          - name: OSS_RO_ACCESS_KEY_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: oss-secret
+                key: roAccessSecret                                                                          
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:
