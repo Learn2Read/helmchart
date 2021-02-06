@@ -106,6 +106,16 @@ spec:
               secretKeyRef:
                 name: keycloak-secret
                 key: auth_server        
+          - name: KEYCLOAK_ADMIN_USER
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: admin_user 
+          - name: KEYCLOAK_ADMIN_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-secret
+                key: admin_password             
           - name: RABBITMQ_HOST
             valueFrom:
               secretKeyRef:
